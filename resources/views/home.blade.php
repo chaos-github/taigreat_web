@@ -1,298 +1,171 @@
 @php $a = asset('assets/taigreat'); @endphp
 @extends('layouts.site')
 
-@section('header')
-    <div class="swiper index_swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <picture>
-                    <source srcset="{{ $a }}/upload/adv/2407261159140000001.jpg" media="(max-width: 991px)">
-                    <img src="{{ $a }}/upload/adv/2407261159140000001.jpg" width="100%" class="img-fluid" alt="專注建築材料及工法領域">
-                </picture>
-                <div class="in_b_title">
-                    <h1>專注建築材料<br>及工法領域</h1>
-                    <a href="{{ route('about') }}">了解更多</a>
-                </div>
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-@endsection
-
 @section('content')
-    <section class="in_p_bg">
-        <div class="container-fluid p-0">
-            <div class="row gx-0 justify-content-between">
-                <div class="col-lg-4">
-                    <div class="in_p_title gs_reveal">
-                        <h3>案例實績</h3>
-                        <i></i>
-                        <span>CASE</span>
-                    </div>
-                    <div class="in_p_box gs_reveal">
-                        <a href="{{ route('case') }}">
-                            <div class="in_p_img">
-                                <img src="{{ $a }}/upload/product/2408081438400000001.jpg" class="img-fluid" alt="根基營造 泰山貴和安居 | RC | 台灣新北市">
-                            </div>
-                            <span>MFE 鋁合金系統模板</span>
-                            <h3>根基營造 泰山貴和安居 | RC | 台灣新北市</h3>
-                        </a>
-                    </div>
-                    <div class="in_p_box gs_reveal">
-                        <a href="{{ route('case') }}">
-                            <div class="in_p_img">
-                                <img src="{{ $a }}/upload/product/2501071807320000001.jpg" class="img-fluid" alt="8 Conlay | RC | 馬來西亞 Kuala Lumpur">
-                            </div>
-                            <span>MFE 鋁合金系統模板</span>
-                            <h3>8 Conlay | RC | 馬來西亞 Kuala Lumpur</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="in_p_box2 gs_reveal">
-                        <a href="{{ route('case') }}">
-                            <div class="in_p_img">
-                                <img src="{{ $a }}/upload/product/2501082022490000001.JPG" class="img-fluid" alt="Cayan Tower | RC | Dubai杜拜">
-                            </div>
-                            <span>MFE 鋁合金系統模板</span>
-                            <h3>Cayan Tower | RC | Dubai杜拜</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-11">
-                    <div class="in_p_a">
-                        <a href="{{ route('case') }}">
-                            了解更多
-                            <div class="in_p_more">
-                                @include('partials.dots')
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="hero">
+        <div class="hero__copy">
+            <p class="eyebrow">Build a better tomorrow</p>
+            <h1>以專業建構<br>更美好的城市</h1>
+            <p>泰權興專注於建築材料與工法，提供高品質整合性系統模板與創新建築解決方案，與您一起打造更安全、更高效率、更永續的建築未來。</p>
+            <a class="btn" href="{{ route('about') }}">探索我們的優勢 →</a>
+            <div class="hero__meta">01　—　02　—　03</div>
         </div>
-        <div class="in_bg_title">
-            <p>
-                <span>專業．誠信．創新</span>
-                <span>專業．誠信．創新</span>
-                <span>專業．誠信．創新</span>
-            </p>
-        </div>
-    </section>
-
-    <section class="in_s_bg bg5">
-        <div class="in_s_img">
-            <img src="{{ $a }}/images/bg.jpg" class="img-fluid in_s_pa" alt="圖">
-        </div>
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 offset-xl-1 col-lg-10">
-                    <div class="row">
-                        <div class="col-sm-7 order-1">
-                            <div class="in_s_title gs_reveal">
-                                <h3>服務項目</h3>
-                                <i></i>
-                                <span>OUR BUSINESS</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 order-3 order-sm-2">
-                            <div class="in_s_a gs_reveal gs_reveal_fromRight">
-                                <a href="{{ route('service') }}">
-                                    了解更多
-                                    <div class="in_s_more">@include('partials.dots')</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 order-2">
-                            <div class="in_s_box">
-                                <b>01</b>
-                                <img src="{{ $a }}/images/s_1.jpg" class="img-fluid" alt="鋁合金系統模板">
-                                <div class="in_s_box2"><h3>鋁合金系統模板</h3></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 order-2">
-                            <div class="in_s_box gs_reveal">
-                                <b>02</b>
-                                <img src="{{ $a }}/images/s_2.jpg" class="img-fluid" alt="價值工程">
-                                <div class="in_s_box2"><h3>價值工程</h3></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 order-2">
-                            <div class="in_s_box gs_reveal">
-                                <b>03</b>
-                                <img src="{{ $a }}/images/s_3.jpg" class="img-fluid" alt="綠建築材料">
-                                <div class="in_s_box2"><h3>綠建築材料</h3></div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 order-2">
-                            <div class="in_s_box gs_reveal">
-                                <b>04</b>
-                                <img src="{{ $a }}/images/s_4.jpg" class="img-fluid" alt="創新工法">
-                                <div class="in_s_box2"><h3>創新工法</h3></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="hero__visual">
+            <img src="{{ $a }}/upload/adv/2407261159140000001.jpg" alt="以專業建構更美好的城市">
+            <div class="hero__badge">
+                <b>TAIGREAT</b>
+                <span>PEOPLE<br>MATERIAL<br>TECHNOLOGY<br>A BETTER CITY</span>
             </div>
         </div>
     </section>
 
-    <section class="in_n_bg bg5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="in_n_title gs_reveal">
-                        <h3>最新消息</h3>
-                        <i></i>
-                        <span>RECENTLY NEWS</span>
+    <section class="about-block">
+        <div class="wrap about-grid">
+            <div>
+                <p class="eyebrow">About Taigreat</p>
+                <h2>關於泰權興</h2>
+                <p>泰權興貿易有限公司專注於建築材料與工法，以專業的技術與服務，提供客戶高效率、高品質的解決方案，持續為城市建設創造價值。</p>
+                <div class="stats">
+                    <div>
+                        <b>40+</b>
+                        <small>年產業經驗　YEARS OF EXPERIENCE</small>
                     </div>
-                    <div class="relative gs_reveal">
-                        <div class="swiper in_n_swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="in_n_items">
-                                        <a href="https://money.udn.com/money/story/5721/8421484" target="_blank" rel="noopener">
-                                            <img src="{{ $a }}/upload/news/2501061753420000001.jpg" class="img-fluid" alt="建材展-MFE 鋁合金系統模板台灣獨家代理">
-                                            <div class="in_n_bottom">
-                                                <time>2024.12.20</time>
-                                                <span>媒體報導</span>
-                                                <i></i>
-                                                <h3>建材展-MFE 鋁合金系統模板台灣獨家代理</h3>
-                                                <em>MORE</em>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="in_n_next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19.622" height="42.157" viewBox="0 0 19.622 42.157"><path d="M14,5,31.813,25.02,14,45.039" transform="translate(-12.941 -3.941)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
-                        </div>
-                        <div class="in_n_prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19.622" height="42.157" viewBox="0 0 19.622 42.157"><path d="M31.813,5,14,25.02l17.813,20.02" transform="translate(-13.25 -3.941)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
-                        </div>
+                    <div>
+                        <b>300+</b>
+                        <small>完成專案　PROJECTS COMPLETED</small>
                     </div>
-                    <div class="in_n_a gs_reveal">
-                        <a href="{{ route('news') }}">了解更多</a>
+                    <div>
+                        <b>100%</b>
+                        <small>客戶滿意度　CUSTOMER SATISFACTION</small>
                     </div>
                 </div>
+                <a class="link-arrow" href="{{ route('about') }}">深入了解我們 →</a>
+            </div>
+            <div class="about-photo">
+                <img src="{{ $a }}/images/a_pic.jpg" alt="關於泰權興">
+                <em>BUILD<br>BETTER<br>LIVE<br>GREENER</em>
             </div>
         </div>
     </section>
 
-    <section class="in_a_bg bg5" style="background-image: url({{ $a }}/images/bg2.jpg);">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 offset-lg-2 col-md-5">
-                    <div class="in_a_img gs_reveal gs_reveal_fromLeft">
-                        <img src="{{ $a }}/images/a_pic.jpg" class="img-fluid" alt="關於我們">
-                    </div>
+    <section class="band band-paper">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Our business</p>
+                    <h2>產品與服務</h2>
+                    <p class="section-kicker">整合產品、技術與服務，提供全方位的建築解決方案。</p>
                 </div>
-                <div class="col-xl-4 col-lg-5 col-md-7">
-                    <div class="in_a_box">
-                        <div class="in_a_title gs_reveal">
-                            <h3>關於我們</h3>
-                            <i></i>
-                            <span>ABOUT US</span>
-                        </div>
-                        <p class="gs_reveal">公司創立至今近四十年，持續在建築材料及創新工法上努力，引進海內外優質企業工藝技術並在台灣開發市場，針對台灣使用需求進行優化改良性質及成本控制。<br>我們目前有七大主要產品系列，並皆已獲得市場的肯定。</p>
-                        <div class="in_a_a gs_reveal">
-                            <a href="{{ route('about') }}">
-                                了解更多
-                                <div class="in_a_more">@include('partials.dots')</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <a class="link-arrow" href="{{ route('service') }}">探索更多服務 →</a>
+            </div>
+            <div class="card-grid">
+                @foreach ([
+                    ['s_1.jpg', '鋁合金系統模板', '輕量化、高精度、高效率'],
+                    ['s_2.jpg', '價值工程', '專業評估、成本優化、產能增值'],
+                    ['s_3.jpg', '綠建築材料', '環保永續、性能節能、健康生活'],
+                    ['s_4.jpg', '創新工法', '持續研發、提升效率、創造可能'],
+                ] as $item)
+                    <a class="photo-card" href="{{ route('service') }}">
+                        <img src="{{ $a }}/images/{{ $item[0] }}" alt="{{ $item[1] }}">
+                        <h3>{{ $item[1] }}</h3>
+                        <p>{{ $item[2] }}</p>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="link_bg bg5 bgx-4" style="background-color: #e6e6e6;">
-        <div class="relative gs_reveal">
-            <div class="swiper in_link_swiper">
-                <div class="swiper-wrapper">
-                    @foreach ([
-                        ['https://www.hahne.cn/', '2604291559000000001.png', '西偉德 悍能'],
-                        ['https://www.tece.com/cn', '2604291508300000001.png', 'TECE'],
-                        ['https://www.graphene.com.tw/home.php', '2501071842280000001.jpg', '石墨稀｜材料生產及應用'],
-                        ['https://www.eternit.com.cn/', '2501071840320000001.jpg', '彩色水泥纖維板-埃特尼特板'],
-                        ['http://easyto1098.com/', '2501071136300000001.jpg', '易塗｜斷熱稀土材料'],
-                        ['https://www.cmimalaysia.com.my/about-us/', '2501071136580000001.jpg', '水泥複合材料'],
-                        ['https://www.mfeformwork.com/', '2501071136070000001.jpg', '鋁合金系統模板'],
-                    ] as $link)
-                        <div class="swiper-slide">
-                            <div class="in_n_items">
-                                <a href="{{ $link[0] }}" target="_blank" rel="noopener">
-                                    <img src="{{ $a }}/upload/link/{{ $link[1] }}" class="img-fluid" alt="{{ $link[2] }}">
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+    <section class="band">
+        <div class="wrap">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Featured projects</p>
+                    <h2>工程實績</h2>
                 </div>
+                <a class="link-arrow" href="{{ route('case') }}">查看更多實績 →</a>
             </div>
-            <div class="in_link_next">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19.622" height="42.157" viewBox="0 0 19.622 42.157"><path d="M14,5,31.813,25.02,14,45.039" transform="translate(-12.941 -3.941)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
-            </div>
-            <div class="in_link_prev">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19.622" height="42.157" viewBox="0 0 19.622 42.157"><path d="M31.813,5,14,25.02l17.813,20.02" transform="translate(-13.25 -3.941)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" /></svg>
+            <div class="project-grid">
+                @forelse ($featuredCases as $case)
+                    <a class="project-card" href="{{ route('case') }}">
+                        <img src="{{ $case->imageUrl() }}" alt="{{ $case->title }}">
+                        <h3>{{ $case->title }}</h3>
+                        <span>{{ $case->category->name }}</span>
+                    </a>
+                @empty
+                    <p>目前沒有精選實績。</p>
+                @endforelse
             </div>
         </div>
     </section>
 
-    <section class="bg5 in_c_bg" style="background-image: url({{ $a }}/images/bg3.jpg);">
-        <div class="container-fluid">
-            <div class="row justify-content-center align-items-end">
-                <div class="col-xxl-4 col-lg-5 col-md-6">
-                    <div class="in_s_title in_c_title gs_reveal">
-                        <h3>聯絡我們</h3>
-                        <i></i>
-                        <span>CONTACT US</span>
-                    </div>
-                    <div class="in_c_box">
-                        <p>如有任何問題，<br>請通過電話或查詢表格與我們聯繫。</p>
-                    </div>
+    <section class="sustain">
+        <div class="sustain__media">
+            <img src="{{ $a }}/images/bg.jpg" alt="永續發展">
+            <div class="sustain__copy">
+                <p class="eyebrow" style="color:rgba(255,255,255,.8)">Sustainability</p>
+                <h2>永續發展</h2>
+                <p>用更好的材料與工法，為下一代建構更永續的城市環境。</p>
+                <a class="btn btn-light" href="{{ route('sustainability') }}" style="margin-top:1.2rem">了解我們的永續行動 →</a>
+            </div>
+        </div>
+        <div class="sustain__side">
+            <div class="sustain-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+                <div>
+                    <h3>環境友善</h3>
+                    <p>ENVIRONMENT</p>
                 </div>
-                <div class="col-xxl-3 col-lg-5 col-md-6">
-                    <div class="in_c_box2">
-                        <h4>TEL. 04-24220159</h4>
-                        <a href="{{ route('contact') }}">
-                            <span>與我們聯絡</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26.306" height="26.306" viewBox="0 0 26.306 26.306">
-                                <g transform="translate(-1354 -5733)">
-                                    <g transform="translate(1354 5733)" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                        <circle cx="13.153" cy="13.153" r="13.153" stroke="none" />
-                                        <circle cx="13.153" cy="13.153" r="12.653" fill="none" />
-                                    </g>
-                                    <g transform="translate(1361.445 5743.423)">
-                                        <path d="M14,5l2.875,2.875L14,10.751" transform="translate(-4.963 -5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
-                                        <line x1="7.135" transform="translate(1.784 2.875)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
+            </div>
+            <div class="sustain-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 19c.8-3 3-5 5-5s4.2 2 5 5M13 19c.4-2 1.6-3.5 3-3.5 1.6 0 2.8 1.4 3.2 3.5"/></svg>
+                <div>
+                    <h3>社會責任</h3>
+                    <p>SOCIAL</p>
+                </div>
+            </div>
+            <div class="sustain-item">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><path d="M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+                <div>
+                    <h3>綠色建築</h3>
+                    <p>GREEN BUILDING</p>
+                </div>
+            </div>
+            <p class="quote">SMALL<br>CHANGES<br>MAKE A<br>GREATER<br>TOMORROW</p>
+        </div>
+    </section>
+
+    <section class="split">
+        <div class="news-block">
+            <div class="wrap">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Latest news</p>
+                        <h2>最新消息</h2>
                     </div>
+                    <a class="link-arrow" href="{{ route('news') }}">查看更多 →</a>
+                </div>
+                <div class="news-grid">
+                    <a class="news-card" href="https://money.udn.com/money/story/5721/8421484" target="_blank" rel="noopener">
+                        <img src="{{ $a }}/upload/news/2501061753420000001.jpg" alt="建材展-MFE 鋁合金系統模板台灣獨家代理">
+                        <time>2024.12.20</time>
+                        <h3>泰權興參與台中大型住宅工程　鋁合金模板助攻工期</h3>
+                    </a>
+                    <a class="news-card" href="{{ route('news') }}">
+                        <img src="{{ $a }}/images/s_3.jpg" alt="綠建築材料動態">
+                        <time>2025.03.18</time>
+                        <h3>綠建築、低碳材料動態更新　持續與產業夥伴合作</h3>
+                    </a>
                 </div>
             </div>
         </div>
+        <aside class="contact-cta">
+            <img src="{{ $a }}/images/bg3.jpg" alt="聯絡我們">
+            <div class="contact-cta__inner">
+                <p class="eyebrow" style="color:rgba(255,255,255,.75)">Contact us</p>
+                <h2>聯絡我們</h2>
+                <p>與我們一起討論您的下一個專案，提供最專業的解決方案。</p>
+                <a class="btn btn-light" href="{{ route('contact') }}" style="margin-top:1.3rem">立即聯絡我們 →</a>
+            </div>
+        </aside>
     </section>
 @endsection
-
-@push('scripts')
-<script>
-    new Swiper('.in_n_swiper', {
-        slidesPerView: 1,
-        spaceBetween: 40,
-        loop: true,
-        navigation: { nextEl: '.in_n_next', prevEl: '.in_n_prev' },
-        breakpoints: { 767: { slidesPerView: 2 }, 1240: { slidesPerView: 3 } },
-    });
-    new Swiper('.in_link_swiper', {
-        slidesPerView: 1,
-        spaceBetween: 40,
-        loop: true,
-        navigation: { nextEl: '.in_link_next', prevEl: '.in_link_prev' },
-        breakpoints: { 767: { slidesPerView: 2 }, 1199: { slidesPerView: 3 }, 1240: { slidesPerView: 5 } },
-    });
-</script>
-@endpush

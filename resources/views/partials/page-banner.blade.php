@@ -1,20 +1,12 @@
 @php $a = asset('assets/taigreat'); @endphp
-<div class="about_banner" style="background-image: url({{ $a }}/{{ $image }});">
-    <div class="a_title">
+<section class="page-hero" @if (! empty($image)) style="background-image: linear-gradient(rgba(12,34,51,.45), rgba(12,34,51,.55)), url({{ $a }}/{{ $image }})" @endif>
+    <div class="wrap">
+        <p class="eyebrow" style="color:rgba(255,255,255,.75)">{{ $en }}</p>
         <h1>{{ $heading }}</h1>
-        <span>{{ $en }}</span>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="bread_box">
-                <ul>
-                    <li><a href="{{ route('home') }}">首頁</a></li>
-                    <li><i></i></li>
-                    <li>{{ $heading }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
+<nav class="crumb wrap" aria-label="麵包屑">
+    <a href="{{ route('home') }}">首頁</a>
+    &nbsp;/&nbsp;
+    <span>{{ $heading }}</span>
+</nav>

@@ -1,13 +1,26 @@
 <?php
 
+use App\Http\Controllers\CaseController;
+use App\Models\CaseItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('home', ['title' => '泰權興貿易']))->name('home');
+Route::get('/', function () {
+    return view('home', [
+        'title' => '泰權興貿易',
+        'featuredCases' => CaseItem::query()
+            ->with('category')
+            ->where('is_featured', true)
+            ->orderBy('sort')
+            ->take(5)
+            ->get(),
+    ]);
+})->name('home');
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/news', 'pages.news')->name('news');
-Route::view('/case', 'pages.case')->name('case');
+Route::get('/case', [CaseController::class, 'index'])->name('case');
 Route::view('/service', 'pages.service')->name('service');
+Route::view('/sustainability', 'pages.sustainability')->name('sustainability');
 
 Route::get('/contact', function () {
     if (! session()->has('captcha_code')) {
