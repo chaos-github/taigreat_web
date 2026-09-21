@@ -786,6 +786,14 @@ a {
     font-weight: 500;
 }
 
+.service-card i {
+    display: block;
+    margin-top: 0.7rem;
+    font-style: normal;
+    font-family: 'Jost', sans-serif;
+    color: var(--muted);
+}
+
 .service-card p {
     color: var(--muted);
     font-size: 0.88rem;

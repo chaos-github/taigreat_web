@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CaseController;
+use App\Http\Controllers\ServiceController;
 use App\Models\CaseItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,7 @@ Route::get('/', function () {
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/news', 'pages.news')->name('news');
 Route::get('/case', [CaseController::class, 'index'])->name('case');
-Route::view('/service', 'pages.service')->name('service');
+Route::get('/service', [ServiceController::class, 'index'])->name('service');
 Route::view('/sustainability', 'pages.sustainability')->name('sustainability');
 
 Route::get('/contact', function () {
