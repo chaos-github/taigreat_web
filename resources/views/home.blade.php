@@ -145,16 +145,15 @@
                     <a class="link-arrow" href="{{ route('news') }}">查看更多 →</a>
                 </div>
                 <div class="news-grid">
-                    <a class="news-card" href="https://money.udn.com/money/story/5721/8421484" target="_blank" rel="noopener">
-                        <img src="{{ $a }}/upload/news/2501061753420000001.jpg" alt="建材展-MFE 鋁合金系統模板台灣獨家代理">
-                        <time>2024.12.20</time>
-                        <h3>泰權興參與台中大型住宅工程　鋁合金模板助攻工期</h3>
-                    </a>
-                    <a class="news-card" href="{{ route('news') }}">
-                        <img src="{{ $a }}/images/s_3.jpg" alt="綠建築材料動態">
-                        <time>2025.03.18</time>
-                        <h3>綠建築、低碳材料動態更新　持續與產業夥伴合作</h3>
-                    </a>
+                    @forelse ($latestNews as $item)
+                        <a class="news-card" href="{{ $item->url ?: route('news') }}" @if ($item->url) target="_blank" rel="noopener" @endif>
+                            <img src="{{ $item->imageUrl() }}" alt="{{ $item->title }}">
+                            <time>{{ $item->publishedLabel() }}　{{ $item->category->name }}</time>
+                            <h3>{{ $item->title }}</h3>
+                        </a>
+                    @empty
+                        <p>目前沒有最新消息。</p>
+                    @endforelse
                 </div>
             </div>
         </div>

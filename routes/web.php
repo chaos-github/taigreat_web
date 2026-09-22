@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CaseController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Models\CaseItem;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +17,16 @@ Route::get('/', function () {
             ->orderBy('sort')
             ->take(5)
             ->get(),
+        'latestNews' => News::query()
+            ->with('category')
+            ->orderByDesc('published_on')
+            ->orderBy('sort')
+            ->take(2)
+            ->get(),
     ]);
 })->name('home');
 Route::view('/about', 'pages.about')->name('about');
-Route::view('/news', 'pages.news')->name('news');
+Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/case', [CaseController::class, 'index'])->name('case');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
 Route::view('/sustainability', 'pages.sustainability')->name('sustainability');
