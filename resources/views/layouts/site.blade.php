@@ -27,13 +27,7 @@
 <header class="site-header">
     <div class="wrap site-header__inner">
         <a class="brand" href="{{ route('home') }}">
-            <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
-                <path d="M16 3 L30 27 H2 Z" fill="#0c2233"/>
-            </svg>
-            <span>
-                <strong>TAIGREAT <br> CONSTRUCTION</strong>
-                <small>恆展堂建築有限公司</small>
-            </span>
+            <img class="brand-logo brand-logo--light" src="{{ $a }}/images/logo_tgc.svg" alt="恆展堂建築 TAIGREAT CONSTRUCTION">
         </a>
         <nav class="site-nav" aria-label="主選單">
             @foreach ($nav as [$name, $label])
@@ -66,16 +60,11 @@
 <footer class="site-footer">
     <div class="wrap site-footer__inner">
         <div class="site-footer__top">
-            <a class="brand" href="{{ route('home') }}">
-                <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
-                    <path d="M16 3 L30 27 H2 Z" fill="#ffffff"/>
-                </svg>
-                <span>
-                    <strong style="color:#fff">TAIGREAT CONSTRUCTION</strong>
-                    <small style="color:rgba(255,255,255,.65)">恆展堂建築有限公司</small>
-                </span>
-            </a>
-            <nav>
+            <div class="site-footer__marks tw:mx-auto">
+                <img src="{{ $a }}/images/footer_logo.svg" alt="恆展堂建築">
+                <img src="{{ $a }}/images/footer_logo_2.svg" alt="恆展堂建築">
+            </div>
+            <nav class="tw:mx-auto">
                 @foreach ($nav as [$name, $label])
                     <a href="{{ route($name) }}">{{ $label }}</a>
                 @endforeach

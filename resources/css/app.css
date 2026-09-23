@@ -20,7 +20,7 @@
     --ink: #1a1d21;
     --muted: #6b7178;
     --line: #e5e2dc;
-    --paper: #000000;
+    --paper: #f4f2ee;
     --white: #fff;
     --max: 1180px;
     --header: 76px;
@@ -143,25 +143,17 @@ a {
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
     flex-shrink: 0;
 }
 
-.brand strong {
+.brand-logo {
     display: block;
-    font-family: 'Jost', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    line-height: 1;
+    width: auto;
+    height: 48px;
 }
 
-.brand small {
-    display: block;
-    margin-top: 0.28rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
+.brand-logo--light {
+    filter: invert(1);
 }
 
 .site-nav {
@@ -677,6 +669,19 @@ a {
     align-items: center;
     padding-bottom: 1.4rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.site-footer__marks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.site-footer__marks img {
+    display: block;
+    height: 48px;
+    width: auto;
 }
 
 .site-footer nav {
