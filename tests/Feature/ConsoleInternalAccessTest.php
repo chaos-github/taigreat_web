@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+/** 後台內網限制：外網 404、內網可進、不可用 X-Forwarded-For 繞過。 */
 class ConsoleInternalAccessTest extends TestCase
 {
     use RefreshDatabase;
@@ -40,5 +41,23 @@ class ConsoleInternalAccessTest extends TestCase
         $this->withHeader('X-Forwarded-For', '192.168.1.10')
             ->get('/console/login', ['REMOTE_ADDR' => '203.0.113.10'])
             ->assertNotFound();
+    }
+
+    public function test_cloudflare_tunnel_cannot_open_console(): void
+    {
+        $this->withHeaders([
+            'CF-Ray' => '0123456789abcdef-TPE',
+            'CF-Connecting-IP' => '203.0.113.50',
+        ])->get('/console/login', ['REMOTE_ADDR' => '127.0.0.1'])
+            ->assertNotFound();
+    }
+
+    public function test_cloudflare_tunnel_can_still_open_the_public_site(): void
+    {
+        $this->withHeaders([
+            'CF-Ray' => '0123456789abcdef-TPE',
+            'CF-Connecting-IP' => '203.0.113.50',
+        ])->get('/', ['REMOTE_ADDR' => '127.0.0.1'])
+            ->assertOk();
     }
 }

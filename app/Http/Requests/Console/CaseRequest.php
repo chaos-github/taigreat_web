@@ -5,6 +5,7 @@ namespace App\Http\Requests\Console;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** 工程實績表單。新增必傳圖，編輯可不換圖。 */
 class CaseRequest extends FormRequest
 {
     public function authorize(): bool
@@ -40,6 +41,7 @@ class CaseRequest extends FormRequest
         ];
     }
 
+    /** checkbox 沒勾時轉成 false，避免 null。 */
     protected function prepareForValidation(): void
     {
         $this->merge([

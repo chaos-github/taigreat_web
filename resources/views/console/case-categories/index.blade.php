@@ -1,3 +1,4 @@
+{{-- 工程實績分類：列表與表單同一頁 --}}
 @extends('console.layout', ['title' => '實績分類', 'heading' => '工程實績分類'])
 
 @section('content')

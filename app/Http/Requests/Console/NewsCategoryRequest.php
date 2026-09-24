@@ -5,6 +5,7 @@ namespace App\Http\Requests\Console;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** 最新消息分類。slug 編輯時略過自己那筆的 unique。 */
 class NewsCategoryRequest extends FormRequest
 {
     public function authorize(): bool

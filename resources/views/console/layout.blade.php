@@ -1,3 +1,4 @@
+{{-- 後台版型：左側選單 + 內容區 --}}
 @php
     $nav = [
         ['console.dashboard', ['console.dashboard'], '總覽', 'Dashboard'],
@@ -22,7 +23,7 @@
 <body class="console-app">
     <aside class="console-sidebar" data-console-sidebar>
         <a class="console-brand" href="{{ route('console.dashboard') }}">
-            <img class="brand-logo brand-logo--light" src="{{ asset('assets/taigreat/images/tgc-logo-ink.png') }}" alt="恆展堂建築 TAIGREAT CONSTRUCTION">
+            <img src="{{ asset('assets/taigreat/images/logo_tgc.svg') }}" alt="恆展堂建築 TAIGREAT CONSTRUCTION">
             <small>內容中心</small>
         </a>
         <nav>

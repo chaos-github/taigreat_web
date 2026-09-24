@@ -1,3 +1,4 @@
+{{-- 後台總覽：筆數、精選實績、最新消息 --}}
 @extends('console.layout', ['title' => '總覽', 'heading' => '內容總覽'])
 
 @section('content')

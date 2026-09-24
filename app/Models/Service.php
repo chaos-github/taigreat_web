@@ -21,6 +21,7 @@ class Service extends Model
         return asset('assets/taigreat/'.$this->image);
     }
 
+    /** 後台說明的換行轉成 br，並跳脫 HTML 防 XSS。 */
     public function safeDescription(): HtmlString
     {
         $text = preg_replace('/<br\s*\/?>/i', "\n", (string) $this->description) ?? '';

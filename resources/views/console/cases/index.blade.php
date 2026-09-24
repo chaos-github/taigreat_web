@@ -1,3 +1,4 @@
+{{-- 工程實績列表 --}}
 @extends('console.layout', ['title' => '工程實績', 'heading' => '工程實績管理'])
 
 @section('content')

@@ -8,6 +8,7 @@ use App\Models\NewsCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/** 後台最新消息分類。尚有消息的分類不可刪。 */
 class NewsCategoryController extends Controller
 {
     public function index(): View

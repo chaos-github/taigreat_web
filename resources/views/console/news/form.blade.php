@@ -1,3 +1,4 @@
+{{-- 最新消息新增 / 編輯 --}}
 @extends('console.layout', ['title' => $item->exists ? '編輯消息' : '新增消息', 'heading' => $item->exists ? '編輯最新消息' : '新增最新消息'])
 
 @section('content')

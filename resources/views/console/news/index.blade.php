@@ -1,3 +1,4 @@
+{{-- 最新消息列表 --}}
 @extends('console.layout', ['title' => '最新消息', 'heading' => '最新消息管理'])
 
 @section('content')

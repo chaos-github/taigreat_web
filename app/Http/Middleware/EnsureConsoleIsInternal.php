@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * 限定 /console 只能從內網（或 CONSOLE_ALLOWED_IPS）進來。
+ * 經 Cloudflare Tunnel 進來的請求一律 404（前台不受影響）。
+ */
 class EnsureConsoleIsInternal
 {
     /**
+     * 本機與 RFC1918 / IPv6 私有網段，一律放行。
+     *
      * @var list<string>
      */
     private const PRIVATE_CIDRS = [
@@ -28,6 +34,12 @@ class EnsureConsoleIsInternal
             return $next($request);
         }
 
+        // Cloudflare Tunnel 連到 origin 時 REMOTE_ADDR 會是本機/內網，必須先擋
+        if ($this->cameViaCloudflare($request)) {
+            abort(404);
+        }
+
+        // 用連線 IP，不信 X-Forwarded-For，避免偽造內網位址
         $ip = (string) $request->server('REMOTE_ADDR', $request->ip());
 
         if ($this->isAllowed($ip)) {
@@ -35,6 +47,13 @@ class EnsureConsoleIsInternal
         }
 
         abort(404);
+    }
+
+    private function cameViaCloudflare(Request $request): bool
+    {
+        return $request->headers->has('CF-Ray')
+            || $request->headers->has('CF-Connecting-IP')
+            || $request->headers->has('CF-Visitor');
     }
 
     private function isAllowed(string $ip): bool

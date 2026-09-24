@@ -1,0 +1,5 @@
+var e=document.querySelector(`[data-console-sidebar]`);document.querySelector(`[data-console-toggle]`)?.addEventListener(`click`,()=>{e?.classList.toggle(`is-open`)}),document.querySelectorAll(`form[data-confirm]`).forEach(e=>{e.addEventListener(`submit`,t=>{window.confirm(e.dataset.confirm)||t.preventDefault()})});var t=document.querySelector(`[data-link-list]`),n=document.querySelector(`[data-add-link]`);n?.addEventListener(`click`,()=>{let e=t.querySelectorAll(`.console-link-row`).length,r=document.createElement(`div`);r.className=`console-link-row`,r.innerHTML=`
+        <input type="url" name="links[${e}][url]" placeholder="https://">
+        <input type="text" name="links[${e}][label]" placeholder="顯示文字">
+        <button type="button" data-remove-link>移除</button>
+    `,n.before(r)}),t?.addEventListener(`click`,e=>{let t=e.target.closest(`[data-remove-link]`);t&&t.closest(`.console-link-row`)?.remove()});

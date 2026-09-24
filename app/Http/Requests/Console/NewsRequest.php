@@ -5,6 +5,7 @@ namespace App\Http\Requests\Console;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** 最新消息表單。新增必傳圖，編輯可不換圖。 */
 class NewsRequest extends FormRequest
 {
     public function authorize(): bool

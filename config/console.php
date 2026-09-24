@@ -7,9 +7,9 @@ return [
     | Extra console IPs
     |--------------------------------------------------------------------------
     |
-    | Private LAN ranges and localhost are always allowed. Add office public
-    | IPs or VPN CIDRs here when the site is hosted on the public internet.
-    | Comma-separated, e.g. "203.0.113.10,203.0.113.0/24".
+    | 後台額外允許的 IP / CIDR。本機與內網網段本來就會放行。
+    | 網站在公網時，把公司對外 IP 或 VPN 網段寫進 CONSOLE_ALLOWED_IPS。
+    | 逗號分隔，例如 "203.0.113.10,203.0.113.0/24"。
     |
     */
 

@@ -10,6 +10,7 @@ use App\Support\ConsoleImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/** 後台最新消息 CRUD，圖片走 ConsoleImageStore。 */
 class NewsController extends Controller
 {
     public function __construct(private ConsoleImageStore $images) {}
@@ -56,7 +57,9 @@ class NewsController extends Controller
         $data = $request->safe()->except('image');
 
         if ($request->hasFile('image')) {
+            $previous = $news->image;
             $data['image'] = $this->images->store($request->file('image'), 'news');
+            $this->images->delete($previous); // 先存新圖再刪舊圖
         }
 
         $news->update($data);
@@ -66,6 +69,7 @@ class NewsController extends Controller
 
     public function destroy(News $news): RedirectResponse
     {
+        $this->images->delete($news->image); // 刪資料列前先刪實體圖
         $news->delete();
 
         return redirect()->route('console.news.index')->with('status', '最新消息已刪除。');

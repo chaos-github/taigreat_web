@@ -8,6 +8,7 @@ use App\Models\News;
 use App\Models\Service;
 use Illuminate\View\View;
 
+/** 後台總覽：筆數與最近內容。 */
 class DashboardController extends Controller
 {
     public function __invoke(): View

@@ -1,3 +1,4 @@
+{{-- 產品與服務新增 / 編輯；說明欄是 textarea，Enter 會存成換行 --}}
 @extends('console.layout', ['title' => $service->exists ? '編輯服務' : '新增服務', 'heading' => $service->exists ? '編輯產品與服務' : '新增產品與服務'])
 
 @section('content')

@@ -1,3 +1,4 @@
+{{-- 工程實績新增 / 編輯 --}}
 @extends('console.layout', ['title' => $caseItem->exists ? '編輯實績' : '新增實績', 'heading' => $caseItem->exists ? '編輯工程實績' : '新增工程實績'])
 
 @section('content')

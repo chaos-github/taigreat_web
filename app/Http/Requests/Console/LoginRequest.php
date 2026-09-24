@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+/** 後台登入驗證；失敗會依 email+IP 限流。 */
 class LoginRequest extends FormRequest
 {
     public function authorize(): bool
@@ -38,6 +39,7 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    /** 通過限流後嘗試登入；失敗記一次，成功清掉計數。 */
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
@@ -53,6 +55,7 @@ class LoginRequest extends FormRequest
         RateLimiter::clear($this->throttleKey());
     }
 
+    /** 同一組帳號+IP 最多試 5 次。 */
     public function ensureIsNotRateLimited(): void
     {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {

@@ -5,6 +5,7 @@ namespace App\Http\Requests\Console;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** 工程實績分類。slug 編輯時略過自己那筆的 unique。 */
 class CaseCategoryRequest extends FormRequest
 {
     public function authorize(): bool

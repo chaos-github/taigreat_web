@@ -1,3 +1,4 @@
+{{-- 後台登入頁，未套 console.layout --}}
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
@@ -16,7 +17,7 @@
         <section class="login-brand">
             <p class="login-kicker">Taigreat Console</p>
             <a class="login-logo" href="{{ route('home') }}">
-                <img class="brand-logo brand-logo--light" src="{{ asset('assets/taigreat/images/tgc-logo-ink.png') }}" alt="恆展堂建築 TAIGREAT CONSTRUCTION">
+                <img src="{{ asset('assets/taigreat/images/logo_tgc.svg') }}" alt="恆展堂建築 TAIGREAT CONSTRUCTION">
             </a>
             <h1>管理官網顯示的內容</h1>
             <p>登入後可編輯工程實績、最新消息與產品服務，變更會同步出現在前台頁面。</p>

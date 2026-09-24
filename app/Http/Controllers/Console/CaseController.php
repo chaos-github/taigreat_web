@@ -10,6 +10,7 @@ use App\Support\ConsoleImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/** 後台工程實績 CRUD，圖片走 ConsoleImageStore。 */
 class CaseController extends Controller
 {
     public function __construct(private ConsoleImageStore $images) {}
@@ -56,7 +57,9 @@ class CaseController extends Controller
         $data = $request->safe()->except('image');
 
         if ($request->hasFile('image')) {
+            $previous = $case->image;
             $data['image'] = $this->images->store($request->file('image'), 'case');
+            $this->images->delete($previous); // 先存新圖再刪舊圖
         }
 
         $case->update($data);
@@ -66,6 +69,7 @@ class CaseController extends Controller
 
     public function destroy(CaseItem $case): RedirectResponse
     {
+        $this->images->delete($case->image); // 刪資料列前先刪實體圖
         $case->delete();
 
         return redirect()->route('console.cases.index')->with('status', '工程實績已刪除。');

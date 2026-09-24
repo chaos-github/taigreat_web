@@ -5,6 +5,7 @@ namespace App\Http\Requests\Console;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+/** 產品與服務表單。新增必傳圖，編輯可不換圖。 */
 class ServiceRequest extends FormRequest
 {
     public function authorize(): bool
@@ -47,6 +48,8 @@ class ServiceRequest extends FormRequest
     }
 
     /**
+     * 去掉空白列，只留下有網址或文字的連結。
+     *
      * @return list<array{url: string, label: string}>
      */
     public function sanitizedLinks(): array

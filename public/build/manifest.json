@@ -36,10 +36,25 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/console.css": {
+    "file": "assets/console-BT8R6fwM.css",
+    "name": "console",
+    "names": [
+      "console.css"
+    ],
+    "src": "resources/css/console.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-pbjuFJFH.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/console.js": {
+    "file": "assets/console-DAkf7bBl.js",
+    "name": "console",
+    "src": "resources/js/console.js",
     "isEntry": true
   },
   "resources/js/service/service.js": {

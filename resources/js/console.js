@@ -1,3 +1,4 @@
+// 後台：側欄開關、刪除確認、服務相關連結增刪
 const sidebar = document.querySelector('[data-console-sidebar]');
 const toggle = document.querySelector('[data-console-toggle]');
 
@@ -5,6 +6,7 @@ toggle?.addEventListener('click', () => {
     sidebar?.classList.toggle('is-open');
 });
 
+// 有 data-confirm 的表單送出前先問一次
 document.querySelectorAll('form[data-confirm]').forEach((form) => {
     form.addEventListener('submit', (event) => {
         if (!window.confirm(form.dataset.confirm)) {
@@ -13,6 +15,7 @@ document.querySelectorAll('form[data-confirm]').forEach((form) => {
     });
 });
 
+// 產品與服務：動態新增 / 移除連結列
 const linkList = document.querySelector('[data-link-list]');
 const addLink = document.querySelector('[data-add-link]');
 

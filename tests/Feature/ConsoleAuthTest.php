@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
+/** 後台登入、訪客導向、新增工程實績。 */
 class ConsoleAuthTest extends TestCase
 {
     use RefreshDatabase;

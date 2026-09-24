@@ -1,3 +1,4 @@
+{{-- 產品與服務列表 --}}
 @extends('console.layout', ['title' => '產品與服務', 'heading' => '產品與服務管理'])
 
 @section('content')

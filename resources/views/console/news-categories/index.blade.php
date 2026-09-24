@@ -1,3 +1,4 @@
+{{-- 最新消息分類：列表與表單同一頁 --}}
 @extends('console.layout', ['title' => '消息分類', 'heading' => '最新消息分類'])
 
 @section('content')

@@ -8,6 +8,7 @@ use App\Models\CaseCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/** 後台工程實績分類。尚有實績的分類不可刪。 */
 class CaseCategoryController extends Controller
 {
     public function index(): View

@@ -65,6 +65,7 @@ Route::post('/contact', function (Request $request) {
     return back()->with('status', '已收到您的留言，我們會盡快與您聯繫。');
 })->name('contact.send');
 
+// 後台：未登入可進登入頁；登入後才能管理前台內容
 Route::middleware('guest')->group(function () {
     Route::get('/console/login', [AuthenticatedSessionController::class, 'create'])->name('console.login');
     Route::post('/console/login', [AuthenticatedSessionController::class, 'store'])->name('console.login.store');
