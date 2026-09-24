@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
-    container_name: mytest-app
+    container_name: taigreat_web-app
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
@@ -24,7 +24,7 @@ services:
 
   nginx:
     image: nginx:1.27-alpine
-    container_name: mytest-nginx
+    container_name: taigreat_web-nginx
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -38,7 +38,7 @@ services:
 
   mysql:
     image: mysql:8.4
-    container_name: mytest-mysql
+    container_name: taigreat_web-mysql
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -57,7 +57,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:5
-    container_name: mytest-phpmyadmin
+    container_name: taigreat_web-phpmyadmin
     restart: unless-stopped
     ports:
       - "8080:80"
@@ -72,7 +72,7 @@ services:
 
   vite:
     image: node:22-alpine
-    container_name: mytest-vite
+    container_name: taigreat_web-vite
     working_dir: /var/www/html
     ports:
       - "5173:5173"
