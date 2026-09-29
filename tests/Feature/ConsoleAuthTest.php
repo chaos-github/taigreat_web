@@ -43,7 +43,8 @@ class ConsoleAuthTest extends TestCase
             ->assertOk()
             ->assertSee('工程實績', false)
             ->assertSee('最新消息', false)
-            ->assertSee('產品與服務', false);
+            ->assertSee('產品與服務', false)
+            ->assertSee('聯絡我們', false);
     }
 
     public function test_invalid_login_is_rejected(): void

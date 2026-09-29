@@ -1,4 +1,4 @@
-{{-- 後台總覽：筆數、精選實績、最新消息 --}}
+{{-- 後台總覽：筆數、精選實績、最新消息、留言 --}}
 @extends('console.layout', ['title' => '總覽', 'heading' => '內容總覽'])
 
 @section('content')
@@ -17,6 +17,11 @@
             <small>產品與服務</small>
             <strong>{{ $serviceCount }}</strong>
             <span>服務頁列表</span>
+        </a>
+        <a class="console-stat" href="{{ route('console.contacts.index') }}">
+            <small>聯絡我們</small>
+            <strong>{{ $contactCount }}</strong>
+            <span>前台留言</span>
         </a>
     </section>
 
@@ -50,6 +55,22 @@
                     </li>
                 @empty
                     <li>目前沒有最新消息。</li>
+                @endforelse
+            </ul>
+        </section>
+        <section class="console-panel">
+            <header>
+                <h2>最新留言</h2>
+                <a href="{{ route('console.contacts.index') }}">查看</a>
+            </header>
+            <ul class="console-plain-list">
+                @forelse ($latestContacts as $contact)
+                    <li>
+                        <span>{{ $contact->name }}　{{ $contact->subject }}</span>
+                        <small>{{ $contact->created_at->format('Y.m.d H:i') }}</small>
+                    </li>
+                @empty
+                    <li>目前沒有留言。</li>
                 @endforelse
             </ul>
         </section>

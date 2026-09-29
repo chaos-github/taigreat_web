@@ -5,6 +5,7 @@
         ['console.cases.index', ['console.cases.*', 'console.case-categories.*'], '工程實績', 'Cases'],
         ['console.news.index', ['console.news.*', 'console.news-categories.*'], '最新消息', 'News'],
         ['console.services.index', ['console.services.*'], '產品與服務', 'Services'],
+        ['console.contacts.index', ['console.contacts.*'], '聯絡我們', 'Contacts'],
     ];
 @endphp
 <!DOCTYPE html>

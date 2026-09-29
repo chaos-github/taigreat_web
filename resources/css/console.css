@@ -214,6 +214,11 @@ textarea {
     cursor: pointer;
 }
 
+.console-btn--danger {
+    background: #8a2b2b;
+    color: #fff;
+}
+
 .console-app {
     min-height: 100vh;
 }
@@ -409,6 +414,33 @@ textarea {
     height: 100px;
 }
 
+.console-detail {
+    display: grid;
+    gap: 1rem;
+    background: #fff;
+    padding: 1.2rem;
+    margin: 0;
+}
+
+.console-detail div {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.console-detail dt {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.console-detail dd {
+    margin: 0;
+}
+
+.console-detail__body {
+    white-space: normal;
+    line-height: 1.7;
+}
+
 .console-table__actions {
     display: flex;
     gap: 0.6rem;
@@ -464,7 +496,7 @@ textarea {
     }
 
     .console-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .console-grid,

@@ -42,27 +42,27 @@
                 @csrf
                 <div>
                     <label for="name">姓名</label>
-                    <input id="name" name="name" type="text" required>
+                    <input id="name" name="name" type="text" value="{{ old('name') }}" required>
                 </div>
                 <div>
                     <label for="company">公司名稱</label>
-                    <input id="company" name="company" type="text">
+                    <input id="company" name="company" type="text" value="{{ old('company') }}">
                 </div>
                 <div>
                     <label for="tel">聯絡電話</label>
-                    <input id="tel" name="tel" type="text">
+                    <input id="tel" name="tel" type="text" value="{{ old('tel') }}">
                 </div>
                 <div>
                     <label for="email">電子信箱</label>
-                    <input id="email" name="email" type="email" required>
+                    <input id="email" name="email" type="email" value="{{ old('email') }}" required>
                 </div>
                 <div>
                     <label for="subject">主旨</label>
-                    <input id="subject" name="subject" type="text" required>
+                    <input id="subject" name="subject" type="text" value="{{ old('subject') }}" required>
                 </div>
                 <div>
                     <label for="content">留言訊息</label>
-                    <textarea id="content" name="content" rows="5" required></textarea>
+                    <textarea id="content" name="content" rows="5" required>{{ old('content') }}</textarea>
                 </div>
                 <div class="captcha-row">
                     <div style="flex:1">
