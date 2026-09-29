@@ -2,6 +2,8 @@
 @php
     $nav = [
         ['console.dashboard', ['console.dashboard'], '總覽', 'Dashboard'],
+        ['console.about.edit', ['console.about.*'], '關於我們', 'About'],
+        ['console.sustainability.edit', ['console.sustainability.*'], '永續發展', 'Sustainability'],
         ['console.cases.index', ['console.cases.*', 'console.case-categories.*'], '工程實績', 'Cases'],
         ['console.news.index', ['console.news.*', 'console.news-categories.*'], '最新消息', 'News'],
         ['console.services.index', ['console.services.*'], '產品與服務', 'Services'],

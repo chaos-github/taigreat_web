@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CaseController;
 use App\Http\Controllers\Console\AuthenticatedSessionController;
 use App\Http\Controllers\Console\CaseCategoryController as ConsoleCaseCategoryController;
@@ -8,10 +9,12 @@ use App\Http\Controllers\Console\ContactController as ConsoleContactController;
 use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\NewsCategoryController as ConsoleNewsCategoryController;
 use App\Http\Controllers\Console\NewsController as ConsoleNewsController;
+use App\Http\Controllers\Console\PageController as ConsolePageController;
 use App\Http\Controllers\Console\ServiceController as ConsoleServiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SustainabilityController;
 use App\Models\CaseItem;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
@@ -33,11 +36,11 @@ Route::get('/', function () {
             ->get(),
     ]);
 })->name('home');
-Route::view('/about', 'pages.about')->name('about');
+Route::get('/about', AboutController::class)->name('about');
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/case', [CaseController::class, 'index'])->name('case');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
-Route::view('/sustainability', 'pages.sustainability')->name('sustainability');
+Route::get('/sustainability', SustainabilityController::class)->name('sustainability');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.send');
@@ -58,4 +61,9 @@ Route::middleware('auth')->prefix('console')->name('console.')->group(function (
     Route::resource('news-categories', ConsoleNewsCategoryController::class)->except(['show', 'create']);
     Route::resource('services', ConsoleServiceController::class)->except('show');
     Route::resource('contacts', ConsoleContactController::class)->only(['index', 'show', 'destroy']);
+
+    Route::get('about', [ConsolePageController::class, 'edit'])->name('about.edit');
+    Route::put('about', [ConsolePageController::class, 'update'])->name('about.update');
+    Route::get('sustainability', [ConsolePageController::class, 'edit'])->name('sustainability.edit');
+    Route::put('sustainability', [ConsolePageController::class, 'update'])->name('sustainability.update');
 });

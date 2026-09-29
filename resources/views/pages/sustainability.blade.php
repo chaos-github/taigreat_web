@@ -1,29 +1,22 @@
-@php $a = asset('assets/taigreat'); @endphp
-@extends('layouts.site', ['title' => '永續發展 | 泰權興貿易'])
+@extends('layouts.site', ['title' => $page->title])
 
 @section('content')
-    @include('partials.page-banner', ['image' => 'images/bg.jpg', 'heading' => '永續發展', 'en' => 'SUSTAINABILITY'])
+    @include('partials.page-banner', ['image' => $page->banner_image, 'heading' => $page->heading, 'en' => $page->heading_en])
 
     <section class="page-section">
         <div class="wrap split-page">
-            <img src="{{ $a }}/images/bg.jpg" alt="永續發展">
+            <img src="{{ $page->imageUrl() }}" alt="{{ $page->heading }}">
             <div class="prose-page">
-                <p class="eyebrow">Our commitment</p>
-                <h3>用更好的材料與工法</h3>
-                <p>泰權興以專業建構更美好的城市，並將環境友善、社會責任與綠色建築視為長期承諾，為下一代建構更永續的城市環境。</p>
+                <p class="eyebrow">{{ $page->eyebrow }}</p>
+                <h3>{{ $page->subtitle }}</h3>
+                <p>{{ $page->safeBody() }}</p>
                 <div class="stats" style="margin-top:2rem">
-                    <div>
-                        <b>環境友善</b>
-                        <small>降低碳排放、提升材料生命週期效率</small>
-                    </div>
-                    <div>
-                        <b>社會責任</b>
-                        <small>與在地工程夥伴共同提升施工安全與品質</small>
-                    </div>
-                    <div>
-                        <b>綠色建築</b>
-                        <small>導入低碳工法與綠建材，支援永續建築目標</small>
-                    </div>
+                    @foreach ($page->stats() as $stat)
+                        <div>
+                            <b>{{ $stat['title'] }}</b>
+                            <small>{{ $stat['text'] }}</small>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

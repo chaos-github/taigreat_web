@@ -460,7 +460,18 @@ textarea {
     padding: 1rem;
 }
 
-.console-link-row {
+.console-links label {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+}
+
+.console-links label:first-of-type {
+    margin-top: 0;
+}
+
+.console-link-row,
+.console-stat-row {
     display: grid;
     gap: 0.6rem;
     margin-bottom: 0.6rem;
@@ -506,6 +517,11 @@ textarea {
 
     .console-link-row {
         grid-template-columns: 1fr 180px auto;
+        align-items: center;
+    }
+
+    .console-stat-row {
+        grid-template-columns: 1fr 2fr;
         align-items: center;
     }
 
