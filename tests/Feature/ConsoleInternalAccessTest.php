@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Http\Middleware\EnsureConsoleIsInternal;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -58,6 +59,36 @@ class ConsoleInternalAccessTest extends TestCase
             'CF-Ray' => '0123456789abcdef-TPE',
             'CF-Connecting-IP' => '203.0.113.50',
         ])->get('/', ['REMOTE_ADDR' => '127.0.0.1'])
+            ->assertOk();
+    }
+
+    public function test_public_network_with_correct_uid_can_open_console_login(): void
+    {
+        $this->get('/console/login?uid='.EnsureConsoleIsInternal::ACCESS_UID, [
+            'REMOTE_ADDR' => '203.0.113.10',
+        ])->assertOk();
+    }
+
+    public function test_public_network_with_wrong_uid_is_still_hidden(): void
+    {
+        $this->get('/console/login?uid=wrong-uid', ['REMOTE_ADDR' => '203.0.113.10'])
+            ->assertNotFound();
+    }
+
+    public function test_cloudflare_tunnel_with_correct_uid_can_open_console_login(): void
+    {
+        $this->withHeaders([
+            'CF-Ray' => '0123456789abcdef-TPE',
+            'CF-Connecting-IP' => '203.0.113.50',
+        ])->get('/console/login?uid='.EnsureConsoleIsInternal::ACCESS_UID, [
+            'REMOTE_ADDR' => '127.0.0.1',
+        ])->assertOk();
+    }
+
+    public function test_console_uid_cookie_keeps_access_after_query_string(): void
+    {
+        $this->withUnencryptedCookie('console_uid', EnsureConsoleIsInternal::ACCESS_UID)
+            ->get('/console/login', ['REMOTE_ADDR' => '203.0.113.10'])
             ->assertOk();
     }
 }

@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->trustProxies(at: '*');
+        $middleware->encryptCookies(except: ['console_uid']);
         $middleware->append(EnsureConsoleIsInternal::class); // 全域先擋外網打 /console
         $middleware->redirectGuestsTo(fn () => route('console.login'));
         $middleware->redirectUsersTo(fn () => route('console.dashboard'));
