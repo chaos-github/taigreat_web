@@ -1,5 +1,12 @@
-@php $a = asset('assets/taigreat'); @endphp
+@php
+    $a = asset('assets/taigreat');
+    $hero = \App\Support\OptimizedImage::url('upload/adv/2407261159140000001.jpg');
+@endphp
 @extends('layouts.site')
+
+@push('head')
+    <link rel="preload" as="image" href="{{ $hero }}" fetchpriority="high">
+@endpush
 
 @section('content')
     <section class="hero">
@@ -11,7 +18,7 @@
             <div class="hero__meta">01　—　02　—　03</div>
         </div>
         <div class="hero__visual">
-            <img src="{{ $a }}/upload/adv/2407261159140000001.jpg" alt="以專業建構更美好的城市">
+            <img src="{{ $hero }}" alt="以專業建構更美好的城市" width="1920" height="1279" fetchpriority="high" decoding="async">
             <div class="hero__badge">
                 <b>TAIGREAT</b>
                 <span>PEOPLE<br>MATERIAL<br>TECHNOLOGY<br>A BETTER CITY</span>
@@ -42,7 +49,7 @@
                 <a class="link-arrow" href="{{ route('about') }}">深入了解我們 →</a>
             </div>
             <div class="about-photo">
-                <img src="{{ $a }}/images/a_pic.jpg" alt="關於泰權興">
+                <img src="{{ \App\Support\OptimizedImage::url('images/a_pic.jpg') }}" alt="關於泰權興" width="900" height="460" loading="lazy" decoding="async">
                 <em>BUILD<br>BETTER<br>LIVE<br>GREENER</em>
             </div>
         </div>
@@ -66,7 +73,7 @@
                     ['s_4.jpg', '創新工法', '持續研發、提升效率、創造可能'],
                 ] as $item)
                     <a class="photo-card" href="{{ route('service') }}">
-                        <img src="{{ $a }}/images/{{ $item[0] }}" alt="{{ $item[1] }}">
+                        <img src="{{ $a }}/images/{{ $item[0] }}" alt="{{ $item[1] }}" width="400" height="310" loading="lazy" decoding="async">
                         <h3>{{ $item[1] }}</h3>
                         <p>{{ $item[2] }}</p>
                     </a>
@@ -87,7 +94,7 @@
             <div class="project-grid">
                 @forelse ($featuredCases as $case)
                     <a class="project-card" href="{{ route('case') }}">
-                        <img src="{{ $case->imageUrl() }}" alt="{{ $case->title }}">
+                        <img src="{{ \App\Support\OptimizedImage::url($case->image) }}" alt="{{ $case->title }}" width="640" height="420" loading="lazy" decoding="async">
                         <h3>{{ $case->title }}</h3>
                         <span>{{ $case->category->name }}</span>
                     </a>
@@ -100,7 +107,7 @@
 
     <section class="sustain">
         <div class="sustain__media">
-            <img src="{{ $a }}/images/bg.jpg" alt="永續發展">
+            <img src="{{ \App\Support\OptimizedImage::url('images/bg.jpg') }}" alt="永續發展" width="1600" height="900" loading="lazy" decoding="async">
             <div class="sustain__copy">
                 <p class="eyebrow" style="color:rgba(255,255,255,.8)">Sustainability</p>
                 <h2>永續發展</h2>
@@ -147,7 +154,7 @@
                 <div class="news-grid">
                     @forelse ($latestNews as $item)
                         <a class="news-card" href="{{ $item->url ?: route('news') }}" @if ($item->url) target="_blank" rel="noopener" @endif>
-                            <img src="{{ $item->imageUrl() }}" alt="{{ $item->title }}">
+                            <img src="{{ \App\Support\OptimizedImage::url($item->image) }}" alt="{{ $item->title }}" width="640" height="400" loading="lazy" decoding="async">
                             <time>{{ $item->publishedLabel() }}　{{ $item->category->name }}</time>
                             <h3>{{ $item->title }}</h3>
                         </a>
@@ -158,7 +165,7 @@
             </div>
         </div>
         <aside class="contact-cta">
-            <img src="{{ $a }}/images/bg3.jpg" alt="聯絡我們">
+            <img src="{{ \App\Support\OptimizedImage::url('images/bg3.jpg') }}" alt="聯絡我們" width="1200" height="900" loading="lazy" decoding="async">
             <div class="contact-cta__inner">
                 <p class="eyebrow" style="color:rgba(255,255,255,.75)">Contact us</p>
                 <h2>聯絡我們</h2>

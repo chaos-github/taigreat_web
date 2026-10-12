@@ -5,8 +5,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip \
         libzip-dev \
         libpng-dev \
+        libjpeg62-turbo-dev \
+        libfreetype6-dev \
+        libwebp-dev \
         libonig-dev \
         libxml2-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install \
         pdo_mysql \
         mbstring \
@@ -14,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         bcmath \
         pcntl \
         opcache \
+        gd \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

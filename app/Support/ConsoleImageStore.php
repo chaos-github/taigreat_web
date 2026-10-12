@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\File;
 /**
  * 後台上傳圖存到 public/assets/taigreat/upload/{folder}/。
  * 資料庫只存相對路徑，例如 upload/case/xxx.jpg。
+ * 存檔後立刻壓圖，並同步一份到 optimized/。
  */
 class ConsoleImageStore
 {
+    public function __construct(private ImageOptimizer $optimizer) {}
+
     public function store(UploadedFile $file, string $folder): string
     {
         $directory = public_path('assets/taigreat/upload/'.$folder);
@@ -20,7 +23,15 @@ class ConsoleImageStore
         $name = $file->hashName();
         $file->move($directory, $name);
 
-        return 'upload/'.$folder.'/'.$name;
+        $relative = 'upload/'.$folder.'/'.$name;
+
+        try {
+            $this->optimizer->optimizeRelative($relative);
+        } catch (\Throwable) {
+            // 壓圖失敗仍保留原檔，避免上傳整個失敗
+        }
+
+        return $relative;
     }
 
     /**
@@ -36,6 +47,8 @@ class ConsoleImageStore
         $root = realpath(public_path('assets/taigreat/upload'));
 
         if ($root === false || ! is_file($full)) {
+            $this->optimizer->deleteOptimized($path);
+
             return;
         }
 
@@ -47,5 +60,6 @@ class ConsoleImageStore
         }
 
         File::delete($real);
+        $this->optimizer->deleteOptimized($path);
     }
 }

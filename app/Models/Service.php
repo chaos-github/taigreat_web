@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\OptimizedImage;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
@@ -18,7 +19,7 @@ class Service extends Model
 
     public function imageUrl(): string
     {
-        return asset('assets/taigreat/'.$this->image);
+        return OptimizedImage::url($this->image);
     }
 
     /** 後台說明的換行轉成 br，並跳脫 HTML 防 XSS。 */

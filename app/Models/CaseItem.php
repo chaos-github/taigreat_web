@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\OptimizedImage;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,6 +26,6 @@ class CaseItem extends Model
 
     public function imageUrl(): string
     {
-        return asset('assets/taigreat/'.$this->image);
+        return OptimizedImage::url($this->image);
     }
 }

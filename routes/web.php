@@ -12,30 +12,13 @@ use App\Http\Controllers\Console\NewsController as ConsoleNewsController;
 use App\Http\Controllers\Console\PageController as ConsolePageController;
 use App\Http\Controllers\Console\ServiceController as ConsoleServiceController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SustainabilityController;
-use App\Models\CaseItem;
-use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home', [
-        'title' => '泰權興貿易',
-        'featuredCases' => CaseItem::query()
-            ->with('category')
-            ->where('is_featured', true)
-            ->orderBy('sort')
-            ->take(5)
-            ->get(),
-        'latestNews' => News::query()
-            ->with('category')
-            ->orderByDesc('published_on')
-            ->orderBy('sort')
-            ->take(2)
-            ->get(),
-    ]);
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 Route::get('/about', AboutController::class)->name('about');
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/case', [CaseController::class, 'index'])->name('case');

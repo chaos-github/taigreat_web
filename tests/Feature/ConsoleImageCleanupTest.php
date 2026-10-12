@@ -39,6 +39,7 @@ class ConsoleImageCleanupTest extends TestCase
         $case = CaseItem::query()->first();
         $this->assertNotNull($case);
         $path = public_path('assets/taigreat/'.$case->image);
+        $optimized = public_path('assets/taigreat/optimized/'.$case->image);
         $this->assertFileExists($path);
 
         $this->actingAs($user)
@@ -47,6 +48,7 @@ class ConsoleImageCleanupTest extends TestCase
 
         $this->assertDatabaseMissing('cases', ['id' => $case->id]);
         $this->assertFileDoesNotExist($path);
+        $this->assertFileDoesNotExist($optimized);
     }
 
     public function test_deleting_news_removes_its_image(): void
@@ -71,6 +73,7 @@ class ConsoleImageCleanupTest extends TestCase
         $news = News::query()->first();
         $this->assertNotNull($news);
         $path = public_path('assets/taigreat/'.$news->image);
+        $optimized = public_path('assets/taigreat/optimized/'.$news->image);
         $this->assertFileExists($path);
 
         $this->actingAs($user)
@@ -79,6 +82,7 @@ class ConsoleImageCleanupTest extends TestCase
 
         $this->assertDatabaseMissing('news', ['id' => $news->id]);
         $this->assertFileDoesNotExist($path);
+        $this->assertFileDoesNotExist($optimized);
     }
 
     public function test_deleting_a_service_removes_its_image(): void
@@ -98,6 +102,7 @@ class ConsoleImageCleanupTest extends TestCase
         $service = Service::query()->first();
         $this->assertNotNull($service);
         $path = public_path('assets/taigreat/'.$service->image);
+        $optimized = public_path('assets/taigreat/optimized/'.$service->image);
         $this->assertFileExists($path);
 
         $this->actingAs($user)
@@ -106,6 +111,7 @@ class ConsoleImageCleanupTest extends TestCase
 
         $this->assertDatabaseMissing('services', ['id' => $service->id]);
         $this->assertFileDoesNotExist($path);
+        $this->assertFileDoesNotExist($optimized);
     }
 
     /** 1x1 GIF，測試環境不需 GD。 */

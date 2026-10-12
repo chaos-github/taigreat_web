@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\OptimizedImage;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
@@ -35,12 +36,12 @@ class Page extends Model
 
     public function imageUrl(): string
     {
-        return asset('assets/taigreat/'.$this->image);
+        return OptimizedImage::url($this->image);
     }
 
     public function bannerUrl(): string
     {
-        return asset('assets/taigreat/'.$this->banner_image);
+        return OptimizedImage::url($this->banner_image);
     }
 
     public function extraValue(string $key, string $default = ''): string
