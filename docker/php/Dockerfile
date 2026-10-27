@@ -1,4 +1,5 @@
-FROM php:8.4-fpm-bookworm
+# 8.4.27 patches PHP2Shell (CVE-2026-109618, CVE-2026-109619). Keep the patch pin.
+FROM php:8.4.27-fpm-bookworm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
