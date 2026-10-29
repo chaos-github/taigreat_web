@@ -10,7 +10,7 @@
             <h2>泰權興貿易</h2>
             <ul>
                 <li>Email：<a href="mailto:info@taigreat.com.tw">info@taigreat.com.tw</a></li>
-                <li>TEL：04-24220159</li>
+                <li>TEL：<a href="tel:+886424220159">04-24220159</a></li>
                 <li>406台中市北屯區昌平東二路156號</li>
             </ul>
         </div>
@@ -22,8 +22,8 @@
     <section class="page-section">
         <div class="wrap">
             <p class="eyebrow">Message</p>
-            <h2 style="font-size:1.8rem;font-weight:500;margin-bottom:1.5rem">聯絡資訊</h2>
-            <p style="margin-bottom:1.8rem;color:#4b5560">感謝您光臨泰權興貿易，請留下您的聯絡資料與訊息，我們會儘快與您聯繫。</p>
+            <h2 style="font-size:1.8rem;font-weight:500;margin-bottom:1.5rem">讓我們從您的需求開始。</h2>
+            <p style="margin-bottom:1.8rem;color:#4b5560">無論是材料選用、工法評估或專案合作，歡迎留下聯絡資訊與需求。若能提供工程類型、使用位置及預計時程，將有助於我們更完整地了解您的專案。</p>
 
             @if (session('status'))
                 <div class="tw:mb-6 tw:bg-green-50 tw:px-5 tw:py-4 tw:text-green-800">{{ session('status') }}</div>
