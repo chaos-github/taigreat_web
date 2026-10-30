@@ -38,6 +38,7 @@ Route::middleware('auth')->prefix('console')->name('console.')->group(function (
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+    Route::patch('cases/{case}/status', [ConsoleCaseController::class, 'updateStatus'])->name('cases.status');
     Route::resource('cases', ConsoleCaseController::class)->except('show');
     Route::resource('case-categories', ConsoleCaseCategoryController::class)->except(['show', 'create']);
     Route::resource('news', ConsoleNewsController::class)->except('show');

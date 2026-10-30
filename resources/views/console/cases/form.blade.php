@@ -28,6 +28,14 @@
         @if ($caseItem->image)
             <img class="console-preview" src="{{ $caseItem->imageUrl() }}" alt="">
         @endif
+        <label>
+            <span>顯示狀態</span>
+            <select name="is_active" required>
+                <option value="1" @selected((string) old('is_active', (int) $caseItem->is_active) === '1')>啟用</option>
+                <option value="0" @selected((string) old('is_active', (int) $caseItem->is_active) === '0')>停用</option>
+            </select>
+        </label>
+        <p>停用後不會顯示於前台工程實績或首頁精選，資料仍會保留。</p>
         <label class="console-check">
             <input type="checkbox" name="is_featured" value="1" @checked(old('is_featured', $caseItem->is_featured))>
             <span>顯示於首頁精選</span>

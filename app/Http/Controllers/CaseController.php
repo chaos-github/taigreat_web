@@ -15,6 +15,7 @@ class CaseController extends Controller
         $currentSlug = $request->string('category')->toString();
 
         $cases = CaseItem::query()
+            ->where('is_active', true)
             ->with('category')
             ->when($currentSlug !== '', function ($query) use ($currentSlug) {
                 $query->whereHas('category', fn ($category) => $category->where('slug', $currentSlug));

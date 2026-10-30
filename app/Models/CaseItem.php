@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['case_category_id', 'title', 'image', 'sort', 'is_featured'])]
+#[Fillable(['case_category_id', 'title', 'image', 'sort', 'is_featured', 'is_active'])]
 class CaseItem extends Model
 {
     protected $table = 'cases';
@@ -16,6 +16,7 @@ class CaseItem extends Model
     {
         return [
             'is_featured' => 'boolean',
+            'is_active' => 'boolean',
         ];
     }
 

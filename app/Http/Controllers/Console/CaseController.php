@@ -8,6 +8,7 @@ use App\Models\CaseCategory;
 use App\Models\CaseItem;
 use App\Support\ConsoleImageStore;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /** 後台工程實績 CRUD，圖片走 ConsoleImageStore。 */
@@ -29,7 +30,7 @@ class CaseController extends Controller
     public function create(): View
     {
         return view('console.cases.form', [
-            'caseItem' => new CaseItem(['sort' => 0, 'is_featured' => false]),
+            'caseItem' => new CaseItem(['sort' => 0, 'is_featured' => false, 'is_active' => true]),
             'categories' => CaseCategory::query()->orderBy('sort')->get(),
         ]);
     }
@@ -65,6 +66,17 @@ class CaseController extends Controller
         $case->update($data);
 
         return redirect()->route('console.cases.index')->with('status', '工程實績已更新。');
+    }
+
+    public function updateStatus(Request $request, CaseItem $case): RedirectResponse
+    {
+        $data = $request->validate([
+            'is_active' => ['required', 'boolean'],
+        ], attributes: ['is_active' => '顯示狀態']);
+
+        $case->update($data);
+
+        return back()->with('status', $case->is_active ? '工程實績已啟用。' : '工程實績已停用。');
     }
 
     public function destroy(CaseItem $case): RedirectResponse

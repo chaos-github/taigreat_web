@@ -23,6 +23,7 @@ class HomeController extends Controller
                 ->select(['id', 'case_category_id', 'title', 'image', 'sort'])
                 ->with('category:id,name,slug')
                 ->where('is_featured', true)
+                ->where('is_active', true)
                 ->orderBy('sort')
                 ->take(5)
                 ->get(),

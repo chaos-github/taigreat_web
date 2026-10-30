@@ -18,6 +18,7 @@
                     <th>標題</th>
                     <th>分類</th>
                     <th>精選</th>
+                    <th>顯示狀態</th>
                     <th>排序</th>
                     <th></th>
                 </tr>
@@ -29,8 +30,17 @@
                         <td>{{ $case->title }}</td>
                         <td>{{ $case->category?->name }}</td>
                         <td>{{ $case->is_featured ? '是' : '否' }}</td>
+                        <td>
+                            <span>{{ $case->is_active ? '啟用' : '停用' }}</span>
+                        </td>
                         <td>{{ $case->sort }}</td>
                         <td class="console-table__actions">
+                            <form method="post" action="{{ route('console.cases.status', $case) }}">
+                                @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="is_active" value="{{ $case->is_active ? '0' : '1' }}">
+                                <button type="submit" aria-label="{{ $case->is_active ? '停用' : '啟用' }}：{{ $case->title }}">{{ $case->is_active ? '停用' : '啟用' }}</button>
+                            </form>
                             <a href="{{ route('console.cases.edit', $case) }}">編輯</a>
                             <form method="post" action="{{ route('console.cases.destroy', $case) }}" data-confirm="確定刪除這筆工程實績？">
                                 @csrf
@@ -41,7 +51,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">目前沒有工程實績。</td>
+                        <td colspan="7">目前沒有工程實績。</td>
                     </tr>
                 @endforelse
             </tbody>
