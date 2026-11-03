@@ -62,17 +62,21 @@
                 </div>
                 <div>
                     <label for="content">留言訊息</label>
-                    <textarea id="content" name="content" rows="5" required>{{ old('content') }}</textarea>
+                    <textarea id="content" name="content" rows="5" maxlength="5000" required>{{ old('content') }}</textarea>
                 </div>
                 <div class="captcha-row">
-                    <div style="flex:1">
+                    <div style="flex:1;min-width:0">
                         <label for="captcha">驗證碼</label>
                         <input id="captcha" name="captcha" type="text" required>
                     </div>
                     <div>
-                        <span class="captcha">{{ session('captcha_code', 'A7K2') }}</span>
+                        <img src="{{ route('contact.captcha', ['v' => bin2hex(random_bytes(4))]) }}" alt="驗證碼圖片" width="160" height="54" style="display:inline-block;vertical-align:middle">
                         <a href="{{ route('contact') }}" class="link-arrow" style="margin-left:0.6rem">換另一組</a>
                     </div>
+                </div>
+                <div hidden aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
                 </div>
                 <label class="check">
                     <input class="form-check-input" name="agree" type="checkbox" value="1" required>

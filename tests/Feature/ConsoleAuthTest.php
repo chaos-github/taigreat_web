@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\CaseCategory;
 use App\Models\CaseItem;
 use App\Models\User;
+use App\Support\ConsoleImageStore;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -93,6 +94,6 @@ class ConsoleAuthTest extends TestCase
         $case = CaseItem::query()->first();
         $this->assertNotNull($case);
         $this->assertFileExists(public_path('assets/taigreat/'.$case->image));
-        @unlink(public_path('assets/taigreat/'.$case->image));
+        app(ConsoleImageStore::class)->delete($case->image);
     }
 }

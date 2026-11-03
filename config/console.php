@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'allow_private_networks' => env('CONSOLE_ALLOW_PRIVATE_NETWORKS', env('APP_ENV', 'production') !== 'production'),
 
     /*
     |--------------------------------------------------------------------------

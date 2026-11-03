@@ -6,5 +6,10 @@ node_modules
 vendor
 storage/logs
 bootstrap/cache/*.php
+.env
+.env.*
+storage/app/private
+storage/framework
+public/hot
 .phpunit.cache
 *.md

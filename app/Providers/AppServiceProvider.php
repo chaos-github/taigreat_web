@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\View\Compilers\SafeBladeCompiler;
-use Illuminate\Support\Facades\URL;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\DynamicComponent;
@@ -38,21 +40,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
-            return;
-        }
+        RateLimiter::for('contact', fn (Request $request): array => [
+            Limit::perMinute(5)->by('contact-minute:'.$request->ip()),
+            Limit::perHour(20)->by('contact-hour:'.$request->ip()),
+        ]);
 
-        $https = request()->isSecure()
-            || request()->header('X-Forwarded-Proto') === 'https';
-
-        if (! $https) {
-            return;
-        }
-
-        URL::forceScheme('https');
-
-        if (is_file(public_path('build/manifest.json'))) {
+        if (! config('app.debug')) {
             Vite::useHotFile(public_path('hot.disabled'));
         }
+
     }
 }

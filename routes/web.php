@@ -26,7 +26,8 @@ Route::get('/service', [ServiceController::class, 'index'])->name('service');
 Route::get('/sustainability', SustainabilityController::class)->name('sustainability');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.send');
+Route::get('/contact/captcha', [ContactController::class, 'captcha'])->middleware('throttle:30,1')->name('contact.captcha');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:contact')->name('contact.send');
 
 // 後台：未登入可進登入頁；登入後才能管理前台內容
 Route::middleware('guest')->group(function () {

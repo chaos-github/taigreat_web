@@ -20,8 +20,8 @@ class PageRequest extends FormRequest
         $rules = [
             'heading' => ['required', 'string', 'max:100'],
             'heading_en' => ['required', 'string', 'max:100'],
-            'banner_image' => ['nullable', 'image', 'max:4096'],
-            'image' => ['nullable', 'image', 'max:4096'],
+            'banner_image' => ['nullable', 'image', 'max:4096', 'dimensions:max_width=6000,max_height=6000'],
+            'image' => ['nullable', 'image', 'max:4096', 'dimensions:max_width=6000,max_height=6000'],
             'eyebrow' => ['required', 'string', 'max:100'],
             'subtitle' => ['required', 'string', 'max:100'],
             'body' => ['required', 'string'],

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Http\Middleware\EnsureConsoleIsInternal;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -62,11 +61,11 @@ class ConsoleInternalAccessTest extends TestCase
             ->assertOk();
     }
 
-    public function test_public_network_with_correct_uid_can_open_console_login(): void
+    public function test_public_network_with_legacy_uid_cannot_open_console_login(): void
     {
-        $this->get('/console/login?uid='.EnsureConsoleIsInternal::ACCESS_UID, [
+        $this->get('/console/login?uid='.'d7f791c5-6e1f-4632-8ebe-c2e108ccae1a', [
             'REMOTE_ADDR' => '203.0.113.10',
-        ])->assertOk();
+        ])->assertNotFound();
     }
 
     public function test_public_network_with_wrong_uid_is_still_hidden(): void
@@ -75,20 +74,20 @@ class ConsoleInternalAccessTest extends TestCase
             ->assertNotFound();
     }
 
-    public function test_cloudflare_tunnel_with_correct_uid_can_open_console_login(): void
+    public function test_cloudflare_tunnel_with_legacy_uid_cannot_open_console_login(): void
     {
         $this->withHeaders([
             'CF-Ray' => '0123456789abcdef-TPE',
             'CF-Connecting-IP' => '203.0.113.50',
-        ])->get('/console/login?uid='.EnsureConsoleIsInternal::ACCESS_UID, [
+        ])->get('/console/login?uid='.'d7f791c5-6e1f-4632-8ebe-c2e108ccae1a', [
             'REMOTE_ADDR' => '127.0.0.1',
-        ])->assertOk();
+        ])->assertNotFound();
     }
 
-    public function test_console_uid_cookie_keeps_access_after_query_string(): void
+    public function test_legacy_console_uid_cookie_does_not_grant_access(): void
     {
-        $this->withUnencryptedCookie('console_uid', EnsureConsoleIsInternal::ACCESS_UID)
+        $this->withUnencryptedCookie('console_uid', 'd7f791c5-6e1f-4632-8ebe-c2e108ccae1a')
             ->get('/console/login', ['REMOTE_ADDR' => '203.0.113.10'])
-            ->assertOk();
+            ->assertNotFound();
     }
 }

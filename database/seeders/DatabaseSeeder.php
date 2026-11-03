@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,12 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::query()->updateOrCreate(
-            ['email' => 'console@taigreat.com.tw'],
-            ['name' => '內容管理員', 'password' => 'password'],
-        );
+        if (app()->isProduction()) {
+            throw new \RuntimeException('Demo content seeding is disabled in production.');
+        }
 
         $this->call([
             CaseSeeder::class,

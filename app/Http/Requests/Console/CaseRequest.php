@@ -21,7 +21,7 @@ class CaseRequest extends FormRequest
         return [
             'case_category_id' => ['required', 'exists:case_categories,id'],
             'title' => ['required', 'string', 'max:255'],
-            'image' => [Rule::requiredIf($this->isMethod('post')), 'nullable', 'image', 'max:4096'],
+            'image' => [Rule::requiredIf($this->isMethod('post')), 'nullable', 'image', 'max:4096', 'dimensions:max_width=6000,max_height=6000'],
             'is_featured' => ['sometimes', 'boolean'],
             'is_active' => ['sometimes', 'boolean'],
             'sort' => ['required', 'integer', 'min:0'],

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Middleware\AddSecurityHeaders;
 use App\Http\Middleware\EnsureConsoleIsInternal;
+use App\Http\Middleware\TrustConfiguredProxies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Middleware\TrustProxies;
 use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -13,8 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->trustProxies(at: '*');
-        $middleware->encryptCookies(except: ['console_uid']);
+        $middleware->replace(TrustProxies::class, TrustConfiguredProxies::class);
+        $middleware->prepend(AddSecurityHeaders::class);
         $middleware->append(EnsureConsoleIsInternal::class); // 全域先擋外網打 /console
         $middleware->redirectGuestsTo(fn () => route('console.login'));
         $middleware->redirectUsersTo(fn () => route('console.dashboard'));

@@ -15,7 +15,7 @@ class ContactFormTest extends TestCase
     {
         $this->get(route('contact'))
             ->assertOk()
-            ->assertSee('聯絡資訊', false);
+            ->assertSee('讓我們從您的需求開始。', false);
     }
 
     public function test_contact_form_is_saved_to_the_database(): void

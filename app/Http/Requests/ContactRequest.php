@@ -22,8 +22,9 @@ class ContactRequest extends FormRequest
             'tel' => ['nullable', 'string', 'max:50'],
             'email' => ['required', 'email', 'max:255'],
             'subject' => ['required', 'string', 'max:200'],
-            'content' => ['required', 'string'],
-            'captcha' => ['required', 'string'],
+            'content' => ['required', 'string', 'max:5000'],
+            'captcha' => ['required', 'string', 'max:10'],
+            'website' => ['prohibited'],
             'agree' => ['accepted'],
         ];
     }
@@ -48,10 +49,11 @@ class ContactRequest extends FormRequest
     public function withValidator($validator): void
     {
         $validator->after(function ($validator): void {
-            $expected = strtoupper((string) session('captcha_code'));
-            $given = strtoupper((string) $this->input('captcha'));
+            $expected = strtoupper((string) session()->pull('captcha_code'));
+            $given = $this->input('captcha');
+            $given = is_string($given) ? strtoupper($given) : '';
 
-            if ($expected === '' || $given !== $expected) {
+            if ($expected === '' || ! hash_equals($expected, $given)) {
                 $validator->errors()->add('captcha', '驗證碼不正確');
             }
         });

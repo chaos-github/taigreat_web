@@ -22,7 +22,7 @@ class ServiceRequest extends FormRequest
             'number' => ['required', 'string', 'max:10'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'image' => [Rule::requiredIf($this->isMethod('post')), 'nullable', 'image', 'max:4096'],
+            'image' => [Rule::requiredIf($this->isMethod('post')), 'nullable', 'image', 'max:4096', 'dimensions:max_width=6000,max_height=6000'],
             'links' => ['nullable', 'array'],
             'links.*.url' => ['nullable', 'url', 'max:255'],
             'links.*.label' => ['nullable', 'string', 'max:50'],
