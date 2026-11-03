@@ -17,8 +17,17 @@
     "src": "resources/css/console.css",
     "isEntry": true
   },
+  "resources/css/home.css": {
+    "file": "assets/home-BooIeiFa.css",
+    "name": "home",
+    "names": [
+      "home.css"
+    ],
+    "src": "resources/css/home.css",
+    "isEntry": true
+  },
   "resources/js/app.js": {
-    "file": "assets/app-Do_DU9_V.js",
+    "file": "assets/app-CSJS3baO.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

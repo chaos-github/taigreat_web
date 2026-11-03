@@ -47,3 +47,20 @@ document.querySelectorAll('[data-filter]').forEach((button) => {
         });
     });
 });
+
+// Keep topic changes manual so visitors can read at their own pace.
+document.querySelectorAll('[data-hero]').forEach((hero) => {
+    const steps = hero.querySelectorAll('[data-hero-step]');
+    const panels = hero.querySelectorAll('[data-hero-panel]');
+    const images = hero.querySelectorAll('[data-hero-image]');
+    hero.querySelector('[data-hero-controls]').hidden = false;
+
+    steps.forEach((step) => {
+        step.addEventListener('click', () => {
+            const index = step.dataset.heroStep;
+            steps.forEach((button) => button.setAttribute('aria-pressed', String(button === step)));
+            panels.forEach((panel) => { panel.hidden = panel.dataset.heroPanel !== index; });
+            images.forEach((image) => { image.hidden = image.dataset.heroImage !== index; });
+        });
+    });
+});

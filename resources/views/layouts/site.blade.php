@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
     @stack('head')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([request()->routeIs('home') ? 'resources/css/home.css' : 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="{{ request()->routeIs('home') ? 'is-home' : 'is-inner' }}">
 <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -60,7 +60,7 @@
     @yield('content')
 </main>
 
-@if (! request()->routeIs('contact'))
+@if (! request()->routeIs('contact', 'home'))
     <section class="project-cta" aria-labelledby="cta-title">
         <div class="wrap project-cta__inner">
             <div><p class="eyebrow">Let's build together</p><h2 id="cta-title">您的下一個專案，<br>從一次對話開始。</h2><p>與我們分享您的工程需求，一起找到合適的材料與工法。</p></div>
